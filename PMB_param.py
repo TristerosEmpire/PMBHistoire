@@ -83,6 +83,8 @@ class ParamGui():
         try:
             test_connexion = mysql.connect(**self.current_config)
             msg = "Connexion réussie."
+            # enregistrement en mémoire de la configuration
+            PMB_search.ID.config = self.current_config
             test_connexion.close()
         except:
             msg = "Aucune connexion. Paramètres erronés."
