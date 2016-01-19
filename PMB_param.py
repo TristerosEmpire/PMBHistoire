@@ -8,19 +8,16 @@ import json
 import PMB_search
 import os.path
 
-"""
-    TODO : Quand j'appuie sur le bouton Paramètres j'ai la lecture du
-    fichier config
-"""
-
 
 class ParamGui():
-    """
-    Paramètres : connexion - demande un objet ID que l'on va manipuler et
-    tester
+
+    """Paramètres : connexion.
+
+    - demande un objet ID que l'on va manipuler et tester.
     """
 
     def __init__(self, master_p=None):
+        """Initialisation des paramètres de connexion."""
         self.connexion = PMB_search.ID.config
         master_p.title("Paramètres")
 
@@ -37,6 +34,7 @@ class ParamGui():
         self.architecture(master_p)
 
     def architecture(self, master):
+        """Définit l'architecture de l'interface utilisateur."""
         # Labels
         lblUser = tk.Label(master, text="Nom")
         lblPasswd = tk.Label(master, text="Mot de Passe")
@@ -73,10 +71,12 @@ class ParamGui():
         self.current_config = None
 
     def test(self):
-        """
-        test : teste la connexion non depuis l'objet passé à l'initialisation
+        """test : teste la connexion.
+
+        Ce test est effectué non depuis l'objet passé à l'initialisation
         mais depuis les zones de texte.
-        Comportement : affiche un messagebox
+
+        Comportement : affiche un messagebox.
         """
         msg = None
         self.lectureChamps()
@@ -91,6 +91,7 @@ class ParamGui():
         msgbox.showinfo(title="information", message=msg)
 
     def enregistre(self):
+        """Enregistre les données en mémoire et sur le JSON."""
         self.lectureChamps()
         # écrase la config actuelle en mémoire :
         PMB_search.ID.config = self.current_config
@@ -104,9 +105,7 @@ class ParamGui():
         f.close()
 
     def lectureChamps(self):
-        """
-        Effectue la lecture des champs du formulaire
-        """
+        """Effectue la lecture des champs du formulaire."""
         self.current_config = {
             'user': self.strUser.get(),
             'password': self.strPasswd.get(),

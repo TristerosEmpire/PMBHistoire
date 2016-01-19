@@ -1,5 +1,5 @@
 #! /usr/bin/python3
-# -*- coding: utf-8 -*-
+# -*- coding:b utf-8 -*-
 import tkinter as tk
 import tkinter.messagebox as msgbox
 import tkinter.ttk as ttk
@@ -41,38 +41,31 @@ class App(tk.Frame):
         btnQuit.grid(row=2, column=2)
 
     def clear(self):
-        """
-        Efface la liste des résultats et place le focus sur la zone de texte.
+        """Efface la liste des résultats et place le focus sur la zone de texte.
         """
         self.lstResult.delete(0, tk.END)
         self.txtSearch.focus_set()
 
     def param(self):
-        """
-        Affiche la boite de dialogue de paramétrage de la connexion à MySQL
-        """
+        """Affiche la boite de dialogue de paramétrage de la connexion."""
         root = tk.Toplevel()
         self.new_ID = PMB_param.ParamGui(root)
         root.mainloop()
 
     def searchCodebarreEvent(self, event):
-        """
-        Gestion de l'événement quand il y a appui sur la touche Entrée simulée
-        par le scan.
+        """Gestion de l'événement quand il y a appui sur la touche Entrée
+        simulée par le scan.
         """
         self.searchCodebarre()
 
     def searchCodebarre(self):
-        """
-        Méthode de recherche de code barres :
+        """Méthode de recherche de code barres :
+
         Suppression du contenu de la Listbox à chaque appel de cette méthode
         Vérifie que la zone de texte n'est pas vide.
         """
         self.clear()
-        """
-        variable stockant le retour de la recherche initialisée à chaine
-        vide.
-        """
+        # variable stockant le retour de la recherche réinitialisée.
         self.rslt = ""
         try:
             self.cnx = search.Connexion()

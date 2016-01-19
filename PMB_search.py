@@ -6,11 +6,13 @@ import json
 
 
 class ID:
-    """
-    Gestion des identifiants pour une connexion à MySQL
+
+    """Gestion des identifiants pour une connexion à MySQL.
+
     - propriété de classe : config (à privilégier)
     - propriétés d'instance : database, user, password et host
     """
+
     config = {
         'user': '',
         'password': '',
@@ -20,6 +22,7 @@ class ID:
 
     def __init__(self, database='bibli', user='root',
                  password='', host='127.0.0.1'):
+        """Initialisation de ID."""
         if os.path.isfile("config.json"):
             self.lecture = open("config.json", 'r')
             self.io = self.lecture.readline()
@@ -37,30 +40,23 @@ class ID:
             ID.config['host'] = self.host
 
     def __str__(self):
+        """Affiche via la fonction print() les paramètres."""
         return "Paramètres de connexion :\n\t- user = " +\
             self.user + "\n\t- database = " + self.database + "\n" +\
             "\t- host = " + self.host
 
 
 class Connexion:
-    """
-    Gestion de la connexion à la base de données
-    """
+
+    """Gestion de la connexion à la base de données."""
 
     def __init__(self):
-        # connexion_id.config.
-        # self.user = connexion_id.user
-        # self.database = connexion_id.database
-        # self.password = connexion_id.password
-        # self.host = connexion_id.host
-        # self.config = connexion_id.config
+        """Initialisation de Connexion."""
         # Vérification de la connexion
         self.cnx = self.est_connectee()
 
     def est_connectee(self):
-        """
-        La base est-elle bien connectée ?
-        """
+        """Vérifie s'il existe une connexion à la base."""
         try:
             # pas d'utilisation directe du self.config
             self.c = MySQLConnection(**ID.config)
@@ -71,17 +67,15 @@ class Connexion:
             self.c.close()
 
     def arret(self):
-        """
-        Arrêt de la connexion à la base
-        """
+        """Arrêt de la connexion à la base."""
         if self.cnx:
             self.c.close()
             self.cnx = False
 
     # DEBUG : cb ="5369450062"
     def checkCodebarre(self, cb):
-        """
-        Vérification de l'historique des emprunteurs pour un exemplaire donné
+        """Vérification de l'historique des emprunteurs pour un exemplaire.
+
         Argument cd : demande le code-barre de l'exemplaire
         Retour : une chaine de caractères
         """
@@ -100,9 +94,7 @@ class Connexion:
         cursor.close()
 
     def __del__(self):
-        """
-        On force la déconnexion à la destruction de l'objet
-        """
+        """On force la déconnexion à la destruction de l'objet."""
         if self.cnx:
             self.c.close()
             self.cnx = False
