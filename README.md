@@ -17,13 +17,13 @@ chmod +x main.py
 ```
 
 ### Au lancement :
-Une fenêtre apparaitra :
+Une fenêtre apparaitra :<br/>
 ![Au lancement](.img/img1.png "Fenêtre de recherche")<br/>
 Il suffira d'entrer le numéro d'exemplaire puis de cliquer sur le bouton _"Recherche"_. <br/>Il est à noter que s'il on utilise un scanner/douchette laser, il n'y a rien à faire : seulement bien activer la zone de texte à la souris pour pouvoir y inscrire le numéro d'exemplaire. La douchette se chargeant de l'écriture et de simuler la touche _Entrée_.
 
 ### Configuration de la connexion :
-Par défaut la configuration est très simple : c'est celle par défaut de PMB si vous n'avez rien modifié à l'installation de ce dernier.
-![Fenêtre de paramètrage.](.img/img2.png)
+Par défaut la configuration est très simple : c'est celle par défaut de PMB si vous n'avez rien modifié à l'installation de ce dernier.<br/>
+![Fenêtre de paramètrage.](.img/img2.png)<br/>
 Il suffira de remplir les différentes zones de textes et de tester la connexion via le bouton _"Connexion ?"_. Il indiquera si les paramètres sont corrects. Et si les paramètres sont fonctionnels alors ils sont automatiquement modifiés, et l'utilisateur pourra effectuer ses recherches, sans effectuer d'enregistrement (cf. infra) ou sans avoir à relancer __PMBHistoire__.
 
 
