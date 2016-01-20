@@ -1,5 +1,5 @@
 #! /usr/bin/python3
-# -*- coding:b utf-8 -*-
+# -*- coding: utf-8 -*-
 import tkinter as tk
 import tkinter.messagebox as msgbox
 import tkinter.ttk as ttk
@@ -9,7 +9,14 @@ import PMB_search as search
 
 class App(tk.Frame):
 
+    """Lancement de l'UI."""
+
     def __init__(self, master=None):
+        """Initialisation.
+
+        - de l'interface,
+        - et des variables des champs de texte.
+        """
         tk.Frame.__init__(self, master)
         # Création d'un ojet StringVar pour l'Entry txtSearch
         self.strCodebarre = tk.StringVar()
@@ -23,6 +30,7 @@ class App(tk.Frame):
         self.architecture(self.master)
 
     def architecture(self, master):
+        """Définition des widgets."""
         btnSearch = ttk.Button(master, text="Recherche",
                                command=self.searchCodebarre)
         btnParam = ttk.Button(master, text="Paramètres", command=self.param)
@@ -41,7 +49,9 @@ class App(tk.Frame):
         btnQuit.grid(row=2, column=2)
 
     def clear(self):
-        """Efface la liste des résultats et place le focus sur la zone de texte.
+        """Efface la liste des résultats.
+
+        Autre action : place le focus sur la zone de texte.
         """
         self.lstResult.delete(0, tk.END)
         self.txtSearch.focus_set()
@@ -53,13 +63,14 @@ class App(tk.Frame):
         root.mainloop()
 
     def searchCodebarreEvent(self, event):
-        """Gestion de l'événement quand il y a appui sur la touche Entrée
-        simulée par le scan.
+        """Gestion de l'événement.
+
+        quand il y a appui sur la touche Entrée simulée par le scan.
         """
         self.searchCodebarre()
 
     def searchCodebarre(self):
-        """Méthode de recherche de code barres :
+        """Méthode de recherche de code barres.
 
         Suppression du contenu de la Listbox à chaque appel de cette méthode
         Vérifie que la zone de texte n'est pas vide.
